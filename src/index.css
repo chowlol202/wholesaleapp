@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-gray-50;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 0.8;
+  }
+}
+
+.property-card {
+  @apply transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-200 rounded-full hover:bg-primary-300 transition-colors;
+}
+
+/* Button Animations */
+.action-button {
+  @apply relative overflow-hidden transition-all duration-300 ease-out transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer;
+}
+
+.action-button::after {
+  @apply absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300;
+  content: '';
+  background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+}
+
+.action-button:hover::after {
+  @apply opacity-100;
+}
+
+.action-button:active::after {
+  background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, transparent 70%);
+}
+
+.import-button {
+  @apply relative overflow-hidden;
+}
+
+.import-button::before {
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full;
+  content: '';
+}
+
+.import-button:hover::before {
+  @apply animate-[shimmer_1s_ease-in-out_infinite];
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.add-button {
+  @apply relative overflow-hidden;
+}
+
+.add-button::before {
+  @apply absolute inset-0 bg-white/20 scale-x-0 origin-left transition-transform duration-300;
+  content: '';
+}
+
+.add-button:hover::before {
+  @apply scale-x-100;
+}
